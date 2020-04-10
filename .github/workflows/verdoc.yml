@@ -1,0 +1,29 @@
+---
+on:
+  push:
+    paths:
+      - VERSION
+
+jobs:
+  set-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Update Readme
+        uses: .
+        with:
+          FILE: README.md
+          PATTERN: (udondan/verdoc\@v)[0-9.]+
+          REPLACE: \${1}${VERSION}
+
+      - name: Update Action
+        uses: .
+        with:
+          FILE: action.yml
+          PATTERN: (udondan/verdoc:)[0-9.]+
+          REPLACE: \${1}${VERSION}

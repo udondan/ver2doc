@@ -1,0 +1,19 @@
+---
+name: VerDoc
+description: Updates repository version in your documentation
+author: deemes79@googlemail.com
+branding:
+  icon: tag
+  color: blue
+runs:
+  using: docker
+  #image: docker://udondan/verdoc:0.0.0
+  image: Dockerfile
+inputs:
+  FILE:
+    description: File to update
+    required: true
+
+  PATTERN:
+    description: Pattern to replace
+    required: true

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# All env vars that can be passed in, are handled in two variants
+# FOO, which can be passed in by the user when running locally
+# INPUT_FOO, which is the prefixed version passed in by GitHub actions
+# The var function covers both cases. Furthermore it converts the variable to
+# a boolean, if the 2nd parameter is true
+var() {
+    local name="$1"
+    local value
+
+    if [[ "${GITHUB_ACTIONS:-}" == "true" ]]; then
+        name="INPUT_${name}"
+    fi
+    if [[ "${2:-}" = true ]]; then
+        value=$(echo "${!name:-}" | tr "[:upper:]" "[:lower:]")
+        if [[ "${value}" == "true" || "${value}" == "yes" ]]; then
+            eval "$1="'true'""
+        else
+            eval "$1="'false'""
+        fi
+    else
+        eval "$1="'${!name:-}'""
+    fi
+}
+
+var FILE
+var PATTERN
+var REPLACE
+
+VERSION=$(cat VERSION)
+[ -z "${REPLACE}" ] && REPLACE='${VERSION}'
+
+REPLACE=$(eval echo ${REPLACE})
+
+echo "${REPLACE}"
+
+set -x
+#sed -Ei -- "s/${PATTERN}/${VERSION}/g" "${FILE}"
+perl -pe "s|${PATTERN}|${REPLACE}|g" "${FILE}"
