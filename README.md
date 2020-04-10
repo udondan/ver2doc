@@ -33,8 +33,6 @@ on:
   push:
     paths:
       - VERSION
-    tags-ignore:
-      - v*
 
 jobs:
   set-version:
