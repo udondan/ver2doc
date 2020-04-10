@@ -33,5 +33,3 @@ VERSION=$(cat VERSION)
 
 REPLACE=$(eval echo ${REPLACE})
 perl -pi -e "s|${PATTERN}|${REPLACE}|g" "${FILE}"
-
-git diff
