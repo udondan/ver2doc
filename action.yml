@@ -16,3 +16,7 @@ inputs:
   PATTERN:
     description: Pattern to replace
     required: true
+
+  REPLACE:
+    description: Replacement string
+    required: false
