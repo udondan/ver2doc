@@ -25,7 +25,7 @@ You can use back references, which then of course requires you to also provide a
     REPLACE: \${1}${VERSION}
 ```
 
-Complete example usage in conjunction with [actions/checkout](https://github.com/marketplace/actions/checkout) and [ad-m/github-push-action](https://github.com/marketplace/actions/github-push)
+Complete example usage in conjunction with [actions/checkout](https://github.com/marketplace/actions/checkout):
 
 ```yaml
 ---
@@ -65,8 +65,7 @@ jobs:
           git diff --exit-code || git commit -m "Updates version references" -a
 
       - name: Push changes
-        uses: ad-m/github-push-action@v0.5.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+        run: >
+          git show-ref --quiet --verify refs/tags/${{ github.ref }} ||
+          git push "https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }}
 ```

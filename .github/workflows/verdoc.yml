@@ -27,7 +27,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git diff --exit-code || git commit -m "Updates version references" -a
 
-      - name: Commit changes
+      - name: Push changes
         run: >
-          git show-ref --verify refs/tags/${{ github.ref }} ||
+          git show-ref --quiet --verify refs/tags/${{ github.ref }} ||
           git push "https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }}
