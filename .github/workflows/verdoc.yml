@@ -28,6 +28,15 @@ jobs:
           PATTERN: (udondan/verdoc:)[0-9.]+
           REPLACE: \${1}${VERSION}
 
+      - name: Diff
+        run: git diff
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Updates version references" -a
+
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
