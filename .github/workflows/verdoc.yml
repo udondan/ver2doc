@@ -27,3 +27,8 @@ jobs:
           FILE: action.yml
           PATTERN: (udondan/verdoc:)[0-9.]+
           REPLACE: \${1}${VERSION}
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

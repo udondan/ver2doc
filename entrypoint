@@ -29,12 +29,7 @@ var PATTERN
 var REPLACE
 
 VERSION=$(cat VERSION)
-[ -z "${REPLACE}" ] && REPLACE='${VERSION}'
+[ -z "${REPLACE}" ] && REPLACE="${VERSION}"
 
 REPLACE=$(eval echo ${REPLACE})
-
-echo "${REPLACE}"
-
-set -x
-#sed -Ei -- "s/${PATTERN}/${VERSION}/g" "${FILE}"
-perl -pe "s|${PATTERN}|${REPLACE}|g" "${FILE}"
+perl -pi -e "s|${PATTERN}|${REPLACE}|g" "${FILE}"

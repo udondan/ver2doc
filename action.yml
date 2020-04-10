@@ -7,7 +7,6 @@ branding:
   color: blue
 runs:
   using: docker
-  #image: docker://udondan/verdoc:0.0.0
   image: Dockerfile
 inputs:
   FILE:
