@@ -21,9 +21,8 @@ You can use back references, which then of course requires you to also provide a
   uses: udondan/ver2doc@v1.0.0
   with:
     FILE: some.file
-          FILE: README.md
-          PATTERN: (udondan/ver2doc\@v)[0-9.]+
-          REPLACE: \${1}${VERSION}
+    PATTERN: (udondan/ver2doc\@v)[0-9.]+
+    REPLACE: \${1}${VERSION}
 ```
 
 Complete example usage in conjunction with [actions/checkout](https://github.com/marketplace/actions/checkout) and [ad-m/github-push-action](https://github.com/marketplace/actions/github-push)
