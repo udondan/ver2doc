@@ -22,14 +22,14 @@ jobs:
           fetch-depth: 1
 
       - name: Update Readme
-        uses: udondan/verdoc@v0.1.0
+        uses: udondan/verdoc@v0.5.0
         with:
           FILE: README.md
           PATTERN: (udondan/verdoc\@v)[0-9.]+
           REPLACE: \${1}${VERSION}
 
       - name: Update Action
-        uses: udondan/verdoc@v0.1.0
+        uses: udondan/verdoc@v0.5.0
         with:
           FILE: action.yml
           PATTERN: (udondan/verdoc:)[0-9.]+
