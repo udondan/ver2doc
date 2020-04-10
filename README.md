@@ -8,7 +8,7 @@ The action needs to be called for every single file and requires to provide a re
 
 ```yaml
 - name: Step 1
-  uses: udondan/verdoc@v0.5.0
+  uses: udondan/verdoc@v1.0.0
   with:
     FILE: some.file
     PATTERN: [0-9.]+
@@ -18,7 +18,7 @@ You can use back references, which then of course requires you to also provide a
 
 ```yaml
 - name: Step 2
-  uses: udondan/verdoc@v0.5.0
+  uses: udondan/verdoc@v1.0.0
   with:
     FILE: some.file
           FILE: README.md
@@ -46,14 +46,14 @@ jobs:
           fetch-depth: 1
 
       - name: Update Readme
-        uses: udondan/verdoc@v0.5.0
+        uses: udondan/verdoc@v1.0.0
         with:
           FILE: README.md
           PATTERN: (udondan/verdoc\@v)[0-9.]+
           REPLACE: \${1}${VERSION}
 
       - name: Update Action
-        uses: udondan/verdoc@v0.5.0
+        uses: udondan/verdoc@v1.0.0
         with:
           FILE: action.yml
           PATTERN: (udondan/verdoc:)[0-9.]+
