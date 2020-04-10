@@ -34,7 +34,7 @@ on:
     paths:
       - VERSION
     tags-ignore:
-      - "*"
+      - v*
 
 jobs:
   set-version:
