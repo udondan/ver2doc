@@ -21,9 +21,6 @@ jobs:
           PATTERN: (udondan/verdoc\@v)[0-9.]+
           REPLACE: \${1}${VERSION}
 
-      - name: Diff
-        run: git diff
-
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
