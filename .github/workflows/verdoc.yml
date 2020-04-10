@@ -22,7 +22,7 @@ jobs:
           REPLACE: \${1}${VERSION}
 
       - name: Diff
-        run: ! git diff --exit-code
+        run: git diff --exit-code
         continue-on-error: true
 
       - name: Commit changes
@@ -30,7 +30,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -m "Updates version references" -a
-        if: failure()
+        if: success()
 
       - name: Push changes
         uses: ad-m/github-push-action@master
