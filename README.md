@@ -66,6 +66,6 @@ jobs:
 
       - name: Push changes
         run: >
-          git show-ref --quiet --verify refs/tags/${{ github.ref }} ||
+          [[ "${{ github.ref }}" == refs/tags/* ]] &&
           git push "https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }}
 ```
