@@ -20,7 +20,7 @@ jobs:
         uses: ./
         with:
           FILE: README.md
-          PATTERN: (udondan/verdoc\@v)[0-9.]+
+          PATTERN: (udondan/ver2doc\@v)[0-9.]+
           REPLACE: \${1}${VERSION}
 
       - name: Commit changes

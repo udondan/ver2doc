@@ -1,6 +1,6 @@
 HELL := /bin/bash
 
-IMAGE_NAME := udondan/verdoc
+IMAGE_NAME := udondan/ver2doc
 IMAGE_VERSION := $(shell cat VERSION)
 
 build:
