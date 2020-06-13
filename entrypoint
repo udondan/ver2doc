@@ -32,4 +32,4 @@ VERSION=$(cat VERSION)
 [ -z "${REPLACE}" ] && REPLACE="${VERSION}"
 
 REPLACE=$(eval echo ${REPLACE})
-perl -pi -e "s|${PATTERN}|${REPLACE}|g" "${FILE}"
+perl -pi -e "s|${PATTERN//|/\\|}|${REPLACE//|/\\|}|g" "${FILE}"
